@@ -60,14 +60,12 @@ jobs:
           name: python-app
           path: .
 
+#https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure-secret
       - name: Login to Azure  
-        uses: azure/login@v1
+        uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}  
-          auth-type: 'SERVICE_PRINCIPAL' 
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          enable-AzPSSession: true
           
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
