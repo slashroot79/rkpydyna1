@@ -30,7 +30,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  id-token: write  # 🔹 Needed for OIDC authentication
+  contents: read   # 🔹 Needed to access repo files
 
 jobs:
   build:
