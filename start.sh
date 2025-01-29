@@ -6,7 +6,7 @@
 # chmod +x Dynatrace-OneAgent.sh
 # ./Dynatrace-OneAgent.sh
 
-export PYTHONPATH = home/site/wwwroot/antenv/lib/python3.11/site-packages
+export PYTHONPATH=home/site/wwwroot/antenv/lib/python3.11/site-packages
 echo "******************* in start.sh *************************************************"
 # Start your Flask app with Gunicorn
 gunicorn --bind 0.0.0.0:8000 wsgi:app
