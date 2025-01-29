@@ -8,7 +8,7 @@
 
 # /bin/sh Dynatrace-OneAgent-Linux-x86-1.305.98.20250114-172617.sh --set-monitoring-mode=fullstack --set-app-log-content-access=true
 
-# export PYTHONPATH=home/site/wwwroot/antenv/lib/python3.11/site-packages
+export PYTHONPATH=home/site/wwwroot/antenv/lib/python3.11/site-packages
 echo "******************* in start.sh *************************************************"
 # Start your Flask app with Gunicorn
-# gunicorn --bind 0.0.0.0:8000 wsgi:app
+gunicorn --bind 0.0.0.0:8000 wsgi:app
