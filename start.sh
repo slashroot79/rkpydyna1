@@ -1,4 +1,6 @@
 #!/bin/sh
+echo "******************* in start.sh *************************************************"
+export PYTHONPATH=home/site/wwwroot/antenv/lib/python3.11/site-packages
 
 
 # https://docs.dynatrace.com/docs/ingest-from/microsoft-azure-services/azure-integrations/azure-appservice/integrate-oneagent-on-web-app-for-containers
@@ -11,21 +13,19 @@
 
 
 #OPTION 2 : Using installer-wrapper.sh
-readonly installerWrapperInstallationPath=/tmp/installer-wrapper.sh
-readonly installerWrapperURL=https://raw.githubusercontent.com/dynatrace-oss/cloud-snippets/main/azure/linux-app-service/oneagent-installer.sh
+# readonly installerWrapperInstallationPath=/tmp/installer-wrapper.sh
+# readonly installerWrapperURL=https://raw.githubusercontent.com/dynatrace-oss/cloud-snippets/main/azure/linux-app-service/oneagent-installer.sh
 
-wget -O $installerWrapperInstallationPath -q $installerWrapperURL
-sh $installerWrapperInstallationPath
+# wget -O $installerWrapperInstallationPath -q $installerWrapperURL
+# sh $installerWrapperInstallationPath
 
 #OPTION 3: Inline.
 # https://docs.dynatrace.com/docs/ingest-from/microsoft-azure-services/azure-integrations/azure-appservice/integrate-oneagent-on-web-app-for-containers
-# START_APP_CMD="gunicorn --bind 0.0.0.0:8000 app:app"
-# STARTUP_CMD="wget -O /tmp/installer-wrapper.sh \
-# -q https://raw.githubusercontent.com/dynatrace-oss/cloud-snippets/main/azure/linux-app-service/oneagent-installer.sh \
-# && DT_ENDPOINT=$DT_ENDPOINT DT_API_TOKEN=$DT_API_TOKEN DT_INCLUDE=$DT_INCLUDE \
-# START_APP_CMD=$START_APP_CMD sh /tmp/installer-wrapper.sh"
+START_APP_CMD="gunicorn --bind 0.0.0.0:8000 app:app"
+wget -O /tmp/installer-wrapper.sh \
+-q https://raw.githubusercontent.com/dynatrace-oss/cloud-snippets/main/azure/linux-app-service/oneagent-installer.sh \
+&& DT_ENDPOINT=$DT_ENDPOINT DT_API_TOKEN=$DT_API_TOKEN DT_INCLUDE=$DT_INCLUDE \
+START_APP_CMD=$START_APP_CMD sh /tmp/installer-wrapper.sh"
 
-export PYTHONPATH=home/site/wwwroot/antenv/lib/python3.11/site-packages
-echo "******************* in start.sh *************************************************"
 # Start your Flask app with Gunicorn
-gunicorn --bind 0.0.0.0:8000 app:app
+# gunicorn --bind 0.0.0.0:8000 app:app
