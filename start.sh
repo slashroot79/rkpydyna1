@@ -25,7 +25,7 @@ START_APP_CMD="gunicorn --bind 0.0.0.0:8000 app:app"
 wget -O /tmp/installer-wrapper.sh \
 -q https://raw.githubusercontent.com/dynatrace-oss/cloud-snippets/main/azure/linux-app-service/oneagent-installer.sh \
 && DT_ENDPOINT=$DT_ENDPOINT DT_API_TOKEN=$DT_API_TOKEN DT_INCLUDE=$DT_INCLUDE \
-START_APP_CMD=$START_APP_CMD sh /tmp/installer-wrapper.sh"
+START_APP_CMD=$START_APP_CMD sh /tmp/installer-wrapper.sh
 
 # Start your Flask app with Gunicorn
 # gunicorn --bind 0.0.0.0:8000 app:app
